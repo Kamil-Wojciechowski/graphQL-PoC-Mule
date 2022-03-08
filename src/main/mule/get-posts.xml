@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="get-postsFlow" doc:id="340a6a3a-ff29-4c6e-bc77-368fc4807ec6" >
+		<http:request method="GET" doc:name="Request" doc:id="6178e8a4-d45a-4896-8f84-1e466dbb5cb8" config-ref="mockAPI" path="/users/{userId}/posts">
+			<http:uri-params ><![CDATA[#[output application/java
+---
+{
+	"userId" : payload.source.id as Number
+}]]]></http:uri-params>
+		</http:request>
+	</flow>
+</mule>

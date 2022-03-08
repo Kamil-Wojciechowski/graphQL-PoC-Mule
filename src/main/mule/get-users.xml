@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="get-usersFlow" doc:id="109b9221-c2f7-4077-ab5b-957ec7afbcb0" >
+		<http:request method="GET" doc:name="Request" doc:id="4747f9d2-a1c0-4c1c-89cb-bd39cb192889" config-ref="mockAPI" path="/users/{userId}">
+			<http:uri-params ><![CDATA[#[output application/java
+---
+{
+	"userId" : payload.params.id as Number
+}]]]></http:uri-params>
+		</http:request>
+		<logger level="INFO" doc:name="Logger" doc:id="5c20bfc2-3684-466b-9d4c-7388ec83bcf7" message="#[payload]"/>
+	</flow>
+</mule>

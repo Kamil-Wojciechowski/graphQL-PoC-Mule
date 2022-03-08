@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:graphql="http://www.mulesoft.org/schema/mule/graphql" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/graphql http://www.mulesoft.org/schema/mule/graphql/current/mule-graphql.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="47fad9d5-1381-4740-bfbb-501e03dd1119" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:request-config name="mockAPI" doc:name="HTTP Request configuration" doc:id="ae2993cf-4cc0-4010-8ce5-a7f0af27c753" basePath="/api/v1" >
+		<http:request-connection protocol="HTTPS" host="62206b88ce99a7de1958dc73.mockapi.io" port="443" />
+	</http:request-config>
+	<graphql:config name="Graphql_Config" doc:name="Graphql Config" doc:id="78659141-3350-45c1-b9d3-2121ae9796e5" configName="mule-product-schema" schemaLocation="schema/schema.graphqls" />
+</mule>

@@ -1,0 +1,31 @@
+#%RAML 1.0
+title: 'GrapghQL-PoC'
+version: '1.0.0'
+baseUri: http://localhost:8081
+mediaType: application/json
+/users:
+    get:
+        description: List all Users
+        responses:
+            200:
+                body:
+                    application/json:
+                        example: { "id": 1, "name": "John" }
+    /{userId}:
+        /posts:
+            get:
+                description: List all Posts for user
+                responses:
+                    200:
+                        body:
+                            application/json:
+                                example: { "id": 1, "name": "John" }
+            /{postId}:
+                /likes:
+                    get:
+                        description: List all likes for posts
+                        responses:
+                            200:
+                                body:
+                                    application/json:
+                                        example: { "id": 1, "name": "John" }
